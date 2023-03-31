@@ -46,7 +46,7 @@ class OperationEvaluator:
     def compare_operator_order(self, first_operator, second_operator) -> bool:
         '''Checks if first_operator should be performed before second_operator
         when evaluating an expression. Order of operations is mainly used for
-        expression formats which use parantheses, like in-fix.
+        expression formats which use parentheses, like in-fix.
         '''
         return self.ORDER_OF_OPERATIONS[first_operator] <= self.ORDER_OF_OPERATIONS[second_operator]
     

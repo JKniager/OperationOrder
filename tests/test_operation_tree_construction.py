@@ -68,7 +68,7 @@ class TestOperationTreeFromPostFix:
         with pytest.raises(fix_format_readers.InvalidPostfixExpressionError):
             tree = fix_format_readers.postfix_to_operation_tree(equation)
     
-    def test_extra_operand_at_begining_error(self):
+    def test_extra_operand_at_beginning_error(self):
         equation = "2 3 4 +"
         with pytest.raises(fix_format_readers.InvalidPostfixExpressionError):
             tree = fix_format_readers.postfix_to_operation_tree(equation)
@@ -247,7 +247,7 @@ class TestInfix:
         with pytest.raises(fix_format_readers.InvalidInfixExpressionError):
             fix_format_readers.infix_to_operation_tree(equation)
     
-    def test_missing_close_paran_error(self):
+    def test_missing_close_paren_error(self):
         equation = "2 + ( 3 + 4"
         with pytest.raises(fix_format_readers.InvalidInfixExpressionError):
             fix_format_readers.infix_to_operation_tree(equation)
@@ -257,12 +257,12 @@ class TestInfix:
         with pytest.raises(fix_format_readers.InvalidInfixExpressionError):
             fix_format_readers.infix_to_operation_tree(equation)
     
-    def test_operator_before_closed_paran_error(self):
+    def test_operator_before_closed_paren_error(self):
         equation = "2 ( 3 + 4 + )"
         with pytest.raises(fix_format_readers.InvalidInfixExpressionError):
             fix_format_readers.infix_to_operation_tree(equation)
     
-    def test_missing_open_paran_error(self):
+    def test_missing_open_paren_error(self):
         equation = "2 + 3 + 4 )"
         with pytest.raises(fix_format_readers.InvalidInfixExpressionError):
             fix_format_readers.infix_to_operation_tree(equation)

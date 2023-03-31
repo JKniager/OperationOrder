@@ -21,7 +21,7 @@ def infix_to_operation_tree(equation: str, sep: str = " ") -> OperationTree:
     for i in split_equ:
         if OperationEvaluator.is_operator(i):
             if expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             # Make sure there aren't any operations we have to perform before the current operator 'i'.
             while not operator_stack.empty():
                 test_operator = operator_stack.get_nowait()
@@ -44,11 +44,11 @@ def infix_to_operation_tree(equation: str, sep: str = " ") -> OperationTree:
             expecting_number = True
         elif i == '(':
             if not expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             operator_stack.put_nowait(i)
         elif i == ')':
             if expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             test_operator = ''
             try:
                 test_operator = operator_stack.get_nowait()
@@ -72,7 +72,7 @@ def infix_to_operation_tree(equation: str, sep: str = " ") -> OperationTree:
                     raise InvalidInfixExpressionError(f"Expression '{equation}' is missing a '('!")
         else:
             if not expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             node_stack.put_nowait(OperationTreeNode(i, None))
             expecting_number = False
     
@@ -114,7 +114,7 @@ def calculate_infix(equation: str, sep: str = " ") -> float:
     for i in split_equ:
         if OperationEvaluator.is_operator(i):
             if expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             # Make sure there aren't any operations we have to perform before the current operator 'i'.
             while not operator_stack.empty():
                 test_operator = operator_stack.get_nowait()
@@ -134,11 +134,11 @@ def calculate_infix(equation: str, sep: str = " ") -> float:
             expecting_number = True
         elif i == '(':
             if not expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             operator_stack.put_nowait(i)
         elif i == ')':
             if expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             test_operator = ''
             try:
                 test_operator = operator_stack.get_nowait()
@@ -159,7 +159,7 @@ def calculate_infix(equation: str, sep: str = " ") -> float:
                     raise InvalidInfixExpressionError(f"Expression '{equation}' is missing a '('!")
         else:
             if not expecting_number:
-                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformated!")
+                raise InvalidInfixExpressionError(f"Expression '{equation}' is misformatted!")
             number_stack.put_nowait(float(i))
             expecting_number = False
     
@@ -281,7 +281,7 @@ def calculate_prefix(equation: str, sep: str = " ") -> float:
     if len(equation) == 0:
         return 0.0
 
-    # An expression in pre-fix format can be reversed and calculated in a similar mannar to expressions in post-fix format.
+    # An expression in pre-fix format can be reversed and calculated in a similar manner to expressions in post-fix format.
     # Note that there are slight alterations to the process since reversing everything also changes the position of
     # the operands, which our code must account for.
     split_equ = equation.split(sep=sep)
@@ -297,7 +297,7 @@ def calculate_prefix(equation: str, sep: str = " ") -> float:
             try:
                 # Notice that unlike post-fix, the first operand comes before the second operand in the stack.
                 # This is because the stack has a reversing effect on the order of items put into it.
-                # Since we already reversed the sequence above, the stack undos our reversal of the operands.
+                # Since we already reversed the sequence above, the stack undoes our reversal of the operands.
                 first_arg = lq.get_nowait()
                 second_arg = lq.get_nowait()
                 lq.put_nowait(OperationEvaluator.evaluate_operator(i, first_arg, second_arg))
