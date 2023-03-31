@@ -6,6 +6,7 @@
 | [A Little History](#a-little-history-jan-łukasiewicz) |
 | [Prefix Notation](#prefix-notation) |
 | [Postfix Notation](#postfix-notation) |
+| [Running the Demo](#running-the-demo) |
 
 ## Introduction: How Humans Write Expressions
 
@@ -17,7 +18,7 @@ We eventually learned the order of operations, and how parentheses can override 
 
 **Example 1:**
 
-```math
+```pseudo
 4 * 5 + 3 ^ 2 =
 4 * 5 + 9 =
 20 + 9 =
@@ -26,7 +27,7 @@ We eventually learned the order of operations, and how parentheses can override 
 
 **Example 2:**
 
-```math
+```pseudo
 4 * ( 5 + 3 ) ^ 2 =
 4 * 8 ^ 2 =
 4 * 64 =
@@ -63,7 +64,7 @@ Looking at our earlier examples which needed to use parentheses to make exceptio
 
 4 \* 5 \+ 3 ^ 2 becomes:
 
-```math
+```pseudo
 + ^ 3 2 * 4 5 =
 + 9 * 4 5 =
 + 9 20 =
@@ -74,7 +75,7 @@ Looking at our earlier examples which needed to use parentheses to make exceptio
 
 4 \* ( 5 \+ 3 ) ^ 2 becomes:
 
-```math
+```pseudo
 * 4 ^ + 5 3 2 =
 * 4 ^ 8 2 =
 * 4 64 =
@@ -174,7 +175,7 @@ Here are our examples written in postfix notation.
 
 4 \* 5 \+ 3 ^ 2 becomes:
 
-```math
+```pseudo
 3 2 ^ 4 5 * + =
 9 4 5 * + =
 9 20 + =
@@ -185,7 +186,7 @@ Here are our examples written in postfix notation.
 
 4 \* ( 5 \+ 3 ) ^ 2 becomes:
 
-```math
+```pseudo
 4 5 3 + 2 ^ * =
 5 8 2 ^ * =
 5 64 * =
@@ -200,56 +201,56 @@ Because of this, postfix notation can be calculated using a stack.
 
 a)
 
-```math
+```pseudo
 Equation: 3 2 ^ 4 5 * +
 Stack:
 ```
 
 b)
 
-```math
+```pseudo
 Equation: 2 ^ 4 5 * +
 Stack: 3
 ```
 
 c)
 
-```math
+```pseudo
 Equation: ^ 4 5 * +
 Stack: 3 2
 ```
 
 d)
 
-```math
+```pseudo
 Equation: 4 5 * +
 Stack: 9
 ```
 
 e)
 
-```math
+```pseudo
 Equation: 5 * +
 Stack: 9 4
 ```
 
 f)
 
-```math
+```pseudo
 Equation: * +
 Stack: 9 4 5
 ```
 
 g)
 
-```math
+```pseudo
 Equation: +
 Stack: 9 20
 ```
 
 g)
 
-```math
+```pseudo
 Equation:
 Stack: 29
 ```
